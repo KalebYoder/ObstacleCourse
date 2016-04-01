@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Obstacle Course.CSharp.Plugins", "Obstacle Course.CSharp.Plugins.csproj", "{38615978-C643-D6BA-68B7-5F128A96C49E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Obstacle Course.CSharp", "Obstacle Course.CSharp.csproj", "{B62A0749-CE9C-1629-0F3A-7622DD9ED7BE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Obstacle Course.CSharp.Editor", "Obstacle Course.CSharp.Editor.csproj", "{697071AE-CA64-CE21-0C64-82BF9E32DDB4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{38615978-C643-D6BA-68B7-5F128A96C49E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38615978-C643-D6BA-68B7-5F128A96C49E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38615978-C643-D6BA-68B7-5F128A96C49E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38615978-C643-D6BA-68B7-5F128A96C49E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B62A0749-CE9C-1629-0F3A-7622DD9ED7BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B62A0749-CE9C-1629-0F3A-7622DD9ED7BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B62A0749-CE9C-1629-0F3A-7622DD9ED7BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B62A0749-CE9C-1629-0F3A-7622DD9ED7BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{697071AE-CA64-CE21-0C64-82BF9E32DDB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{697071AE-CA64-CE21-0C64-82BF9E32DDB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{697071AE-CA64-CE21-0C64-82BF9E32DDB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{697071AE-CA64-CE21-0C64-82BF9E32DDB4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
