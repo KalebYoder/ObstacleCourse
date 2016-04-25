@@ -7,13 +7,16 @@ public class Vaults : MonoBehaviour {
     private CharacterController hitbox;
     private FirstPersonController fps;
     private GameObject vaultedObject;
-    private float originalHeight;
+    private float originalHeight; //The default height of the player model. Height at any point may be modified by character actions
+    private float originalSpeed; //The default speed of the player. Speed at any point may be modified by character actions
     private Vector3 forward;
-    private bool konging;
-    private bool popVaulting;
+    private int numKongs; //the number of times the player has done a kong vault without landing. Kongs stop working at 2
+    private bool wallJumping;
     private bool wallHanging;
     private float heightDifference;
+    private Vector3 Motion; //contains the x, y, and z speeds of the player
     RaycastHit hit;
+	GameObject vaultedIn;
 
     public void Start()
     {
@@ -21,9 +24,10 @@ public class Vaults : MonoBehaviour {
         originalHeight = hitbox.height;
         fps = GameObject.Find("Player").GetComponent<FirstPersonController>();
         forward = hitbox.transform.eulerAngles;
-        konging = false;
-        popVaulting = false;
+        numKongs = 0;
+        wallJumping = false;
         wallHanging = false;
+		vaultedObject = null;
 
     }
 
@@ -35,13 +39,23 @@ public class Vaults : MonoBehaviour {
             vaultedObject = hit.collider.gameObject;
             LongKong();
         }
-        konging = false;*/
+        konging = false;
+        */
+        Motion = fps.MoveDir;
     }
 
     public void TypeChecker(GameObject vaultedIn)
     {
         vaultedObject = vaultedIn;
-        heightDifference = GameObject.Find("vaultedObject").transform.up.y - hitbox.transform.up.y;
+        if (numKongs == 0 && Physics.Raycast(forward, Vector3.forward, out hit, 3f))
+        {
+            WallJump();
+        }
+        if (Physics.Raycast(forward, (Vector3.forward + Vector3.down), out hit, 3f) && numKongs<2)
+        {
+            Kong();
+        }
+        /*heightDifference = vaultedObject.transform.up.y - hitbox.transform.up.y;
         print(heightDifference);
         if ( heightDifference <= 1)
         {
@@ -54,12 +68,14 @@ public class Vaults : MonoBehaviour {
         if (heightDifference <= 3)
         {
             WallClimb();
-        }
+        }*/
     }
     public void Kong()
     {
         //animate kong
         //konging = true;
+        Motion.y = fps.JumpSpeed * 4;
+        fps.MoveDir = Motion;
         hitbox.height = originalHeight / 2;
     }
 
@@ -68,8 +84,10 @@ public class Vaults : MonoBehaviour {
         forward.y = (fps.JumpSpeed / 4);
     }
 
-    public void PopVault()
+    public void WallJump()
     {
+        Motion.y = fps.JumpSpeed * 10;
+        fps.MoveDir = Motion;
 
     }
 
@@ -77,4 +95,17 @@ public class Vaults : MonoBehaviour {
     {
 
     }
+    
+    /*private void OnTriggerStay(Collider colliding)
+    {
+        if (!popVaulting)
+        {
+            popVaulting = true;
+            PopVault(colliding);
+        }
+        else if(!wallHanging)
+        {
+            WallClimb();
+        }
+    }*/
 }

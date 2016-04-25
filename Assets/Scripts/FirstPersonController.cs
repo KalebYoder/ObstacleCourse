@@ -66,6 +66,24 @@ namespace UnityStandardAssets.Characters.FirstPerson
             set { m_JumpSpeed = value; }
         }
 
+        public bool Jumping
+        {
+            get { return m_Jumping; }
+            set { m_Jumping = value; }
+        }
+
+        public bool Jump
+        {
+            get { return m_Jump; }
+            set { m_Jump = value; }
+        }
+
+        public Vector3 MoveDir
+        {
+            get { return m_MoveDir; }
+            set { m_MoveDir = value; }
+        }
+
         // Use this for initialization
         private void Start()
         {
@@ -146,12 +164,18 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     PlayJumpSound();
                     m_Jump = false;
                     m_Jumping = true;
-                    if (Physics.Raycast(transform.position, transform.forward, out hit, 1))
+                    /*if (Physics.Raycast(transform.position, transform.forward, out hit, 1))
                     {
                         objectHit = hit.collider.gameObject;
                         vaultTypes.TypeChecker(objectHit);
-                    }
+                    }*/
                 }
+            }
+            else if (m_Jumping && m_Jump && Physics.Raycast(transform.position, transform.forward, out hit, 1))
+            {
+                objectHit = hit.collider.gameObject;
+                vaultTypes.TypeChecker(objectHit);
+                //m_Jump = false;
             }
             else
             {
